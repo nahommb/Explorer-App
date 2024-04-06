@@ -12,9 +12,9 @@ class PlaceLocation{
 class Place {
   final String id;
   final String title;
-  final PlaceLocation loacatin;
+  final PlaceLocation? loacation;
   final File image;
 
-  Place({required this.id,required this.title,required this.loacatin,required this.image});
+  Place({required this.id,required this.title,required this.loacation,required this.image});
 
 }
