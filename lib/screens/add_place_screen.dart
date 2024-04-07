@@ -24,10 +24,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   }
   void _savePlace(){
     if(_titleController.text.isEmpty || _pickedImage==null){
+      print('messi');
       return;
   }
-    Provider.of<GreatePlaces>(context).addPlace(_titleController.text, _pickedImage!);
+    Provider.of<GreatePlaces>(context,listen:false).addPlace(_titleController.text, _pickedImage!);
     Navigator.pop(context);
+    print('lee');
   }
   @override
   Widget build(BuildContext context) {
