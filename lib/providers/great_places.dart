@@ -23,18 +23,26 @@ class GreatePlaces with ChangeNotifier{
       {
         'id':newPlace.id,
         'title':newPlace.title,
-        'image':newPlace.image
+        'image':newPlace.image.path
       }
     );
   }
 
   Future<void> fetchAndSetData() async{
    final dataList = await DBHelper.getData('user_places');
-   _items = dataList.map((items)=>
-       Place(id: items['id'],
-           title:items['title'],
-           loacation: null,
-           image: File(items['image']))).toList();
+   // print('lekoajijej chhhhhhhhhhhhhhhecccccccck$dataList');
+   // _items.clear();
+   // for(int i =0; i<dataList.length;i++){
+   //   _items.add(Place(id: dataList[i]['id'],
+   //       title:dataList[i]['title'],
+   //       loacation: null,
+   //       image: File(dataList[i]['image'])));
+   // }
+    _items = dataList.map((items)=>
+        Place(id: items['id'],
+            title:items['title'],
+            loacation: null,
+            image: File(items['image']))).toList();
     notifyListeners();
   }
 }

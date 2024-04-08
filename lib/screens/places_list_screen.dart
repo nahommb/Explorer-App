@@ -19,9 +19,11 @@ class PlaceListScreen extends StatelessWidget {
         )
       ],),
       body: FutureBuilder(
-        future: Provider.of<GreatePlaces>(context).fetchAndSetData(),
-        builder: (ctx,snapshot)=>snapshot.connectionState==ConnectionState.waiting?
-        Center(child: CircularProgressIndicator(),) : Consumer<GreatePlaces>(
+        future: Provider.of<GreatePlaces>(context,listen: false).fetchAndSetData(),
+        builder: (ctx,snapshot)=>snapshot.connectionState==ConnectionState.waiting?Center(
+          child:CircularProgressIndicator()
+        ):
+        Consumer<GreatePlaces>(
           builder: (ctx,greatPlace,child)=>greatPlace.items.length<=0?Center(
             child: Text('no places yet added'),
           ):ListView.builder(
@@ -29,6 +31,7 @@ class PlaceListScreen extends StatelessWidget {
             itemBuilder: (ctx,index)=>ListTile(
               leading: CircleAvatar(backgroundImage: FileImage(greatPlace.items[index].image,)),
               title: Text(greatPlace.items[index].title),
+              onTap: (){},
             ),
           ),
         ),

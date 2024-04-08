@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:explorer_app/providers/great_places.dart';
 import 'package:explorer_app/widget/image_input.dart';
+import 'package:explorer_app/widget/location_input.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -51,7 +52,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     ),
                   ),
                   SizedBox(height: 10,),
-                  ImageInput(_selectedImage)
+                  ImageInput(_selectedImage),
+                  SizedBox(height: 10,),
+                  LocationInput()
                 ],
               ),
             ),
